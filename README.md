@@ -1,2 +1,0 @@
-# poliAppNestjs
-backend the poliApp
