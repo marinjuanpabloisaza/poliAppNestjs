@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: poliApp
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "3306:3306"   # Expuesto para conexión local
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql   # Apunta al contenedor de MySQL dentro de Docker
+      PMA_USER: admin
+      PMA_PASSWORD: admin123
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    volumes:
+      - phpmyadmin_data:/etc/phpmyadmin
+
+volumes:
+  mysql_data:
+  phpmyadmin_data:
