@@ -1,0 +1,4 @@
+export declare enum codeResponse {
+    UNEXPECTERD_ERROR = "UNEXPECTERD_ERROR",
+    PASSWORD_MISSING = "PASSWORD_MISSING"
+}
